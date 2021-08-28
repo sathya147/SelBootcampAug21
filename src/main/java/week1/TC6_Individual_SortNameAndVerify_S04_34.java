@@ -1,6 +1,7 @@
 package week1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -56,9 +57,15 @@ public class TC6_Individual_SortNameAndVerify_S04_34 {
 		List<WebElement> namesDisplayedList = driver.findElements(By.xpath("//tbody//a[contains(@href,'lightning')]"));
 		//storing the displayed list in ArrayList
 		for (WebElement each : namesDisplayedList) {
-			System.out.print(each.getText().toLowerCase()); 
+			//System.out.print(each.getText().toLowerCase()); 
 			displayedList.add(each.getText().toLowerCase());
 		}
+		/*
+		 * Karthik suggested to get the displayed list of name and sort it.  The click the table to sort, collect that sorted list 
+		 * in a new List then compare to see if they are equal.  
+		 */
+		Collections.sort(displayedList);
+		System.out.print("displaying after sort" +displayedList);
 		System.out.println();
 		
 		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//span[@class='slds-truncate' and text()='Name']")));
