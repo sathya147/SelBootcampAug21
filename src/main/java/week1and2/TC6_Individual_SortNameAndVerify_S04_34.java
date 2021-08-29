@@ -1,11 +1,14 @@
-package week1;
+package week1and2;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,9 +16,9 @@ import org.openqa.selenium.interactions.Actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC2_Individual_Edit_S04_31 {
+public class TC6_Individual_SortNameAndVerify_S04_34 {
 
-	public static void main(String[] args) throws InterruptedException  {
+	public static void main(String[] args) throws InterruptedException, StaleElementReferenceException  {
 		// TODO Auto-generated method stub
 		
 		WebDriverManager.chromedriver().setup();
@@ -26,6 +29,8 @@ public class TC2_Individual_Edit_S04_31 {
 		driver.manage().window().maximize();
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver; 
+		List<String> displayedList = new ArrayList<String>();  
+		List<String> sortedList = new ArrayList<String>();  
 		
 		driver.get("https://login.salesforce.com/");
 			
@@ -48,33 +53,40 @@ public class TC2_Individual_Edit_S04_31 {
 		Actions actions = new Actions(driver); 
 		actions.moveToElement(elementIndividual).click().perform(); 
 		
-		driver.findElement(By.xpath("//input[@name='Individual-search-input']")).sendKeys("Jeyaraj");
-		driver.findElement(By.xpath("//input[@name='Individual-search-input']")).sendKeys(Keys.ENTER);
+		//Click on column 'Name' 
+		List<WebElement> namesDisplayedList = driver.findElements(By.xpath("//tbody//a[contains(@href,'lightning')]"));
+		//storing the displayed list in ArrayList
+		for (WebElement each : namesDisplayedList) {
+			//System.out.print(each.getText().toLowerCase()); 
+			displayedList.add(each.getText().toLowerCase());
+		}
+		/*
+		 * Karthik suggested to get the displayed list of name and sort it.  The click the table to sort, collect that sorted list 
+		 * in a new List then compare to see if they are equal.  
+		 */
+		Collections.sort(displayedList);
+		System.out.print("displaying after sort" +displayedList);
+		System.out.println();
+		
+		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//span[@class='slds-truncate' and text()='Name']")));
 		Thread.sleep(7000);
-		//click on down arrow of first record
-		driver.findElement(By.xpath("//span[@class='slds-truncate' and @title='Name']/ancestor::table[@data-aura-class='uiVirtualDataTable']//tbody//tr[1]/td[6]")).click();
-		//clicking Edit
-		driver.findElement(By.xpath("//a[@title='Edit']")).click();
+		List<WebElement> namesSortedList = driver.findElements(By.xpath("//tbody//a[contains(@href,'lightning')]"));
+		//storing the sorted list in ArrayList
+		for (WebElement each : namesSortedList) {
+			System.out.print(each.getText().toLowerCase()); 
+			sortedList.add(each.getText().toLowerCase());
+		}
 		
-		//selecting "Mr" in Salutation
-		driver.findElement(By.xpath("//span[text()='Salutation']/following::a[@class='select']")).click();
-		List<WebElement> list_Salutation = driver.findElements(By.xpath("//div[@class='select-options']//li"));
-		list_Salutation.get(1).click();
-		
-		
-		//Enter First Name and save
-		driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("Sathya");
-		driver.findElement(By.xpath("//div[@data-aura-class='forceRecordEditActions']//span[text()='Save']")).click();
-		
-		String stringOf_individualEditedResult = driver.findElement(By.partialLinkText("Sathya")).getText(); 
-		
-		if (stringOf_individualEditedResult.contains("Sathya")) {
-			System.out.println("Individual is edited successfully");
+		//verify if names are sorted 
+		if (displayedList.equals(sortedList)) {
+			System.out.println("Names are sorted");	
 		}
 		else {
-			System.out.println("Individual was not edited as expected");
+			System.out.println("Names are not sorted");
 		}
-
+		
+    	System.out.println("end of script");
+		
 
 		
 	}

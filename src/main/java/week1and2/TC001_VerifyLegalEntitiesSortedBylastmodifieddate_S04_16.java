@@ -1,4 +1,4 @@
-package week1;
+package week1and2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,12 +53,16 @@ public class TC001_VerifyLegalEntitiesSortedBylastmodifieddate_S04_16 {
 		for (WebElement each : datesDisplayedList) {
 			displayedList.add(each.getText()); 
 		}
-		System.out.println("before sort: " +displayedList);
+//		System.out.println("before sort: " +displayedList);
 		Collections.sort(displayedList);
-		System.out.println("after sort: " +displayedList);
+//		System.out.println("after sort: " +displayedList);
 		
 		//click on column 'Last Modified Date' to sort it
 		WebElement columnLMDate = driver.findElement(By.xpath("//span[text()='Last Modified Date']"));
+		/*
+		 * For the test case, we are clicking the column 'LastModifiedDate' twice. 
+		 * Since on the first click it does not sort.  Only on the second click it sorts. 
+		 */
 		js.executeScript("arguments[0].click()", columnLMDate); 
 		Thread.sleep(3000); 
 		js.executeScript("arguments[0].click()", columnLMDate); 
@@ -68,7 +72,7 @@ public class TC001_VerifyLegalEntitiesSortedBylastmodifieddate_S04_16 {
 		
 		for (WebElement each : datesSortedList) {
 			sortedList.add(each.getText()); 
-			System.out.println("after site sort: " +each.getText());
+//			System.out.println("after site sort: " +each.getText());
 		}
 		System.out.println(sortedList);
 		

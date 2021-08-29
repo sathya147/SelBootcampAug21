@@ -1,4 +1,4 @@
-package week1;
+package week1and2;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
