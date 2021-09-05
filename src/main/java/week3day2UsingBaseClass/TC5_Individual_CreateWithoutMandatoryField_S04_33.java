@@ -1,4 +1,4 @@
-package week1and2;
+package week3day2UsingBaseClass;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -9,12 +9,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC5_Individual_CreateWithoutMandatoryField_S04_33 {
 
-	public static void main(String[] args)  {
+	@Test
+	public void createIndividualWithoutMandatoryFields()  {
 		// TODO Auto-generated method stub
 		
 		WebDriverManager.chromedriver().setup();

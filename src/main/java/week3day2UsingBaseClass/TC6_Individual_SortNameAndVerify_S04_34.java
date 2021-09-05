@@ -1,4 +1,4 @@
-package week1and2;
+package week3day2UsingBaseClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +13,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC6_Individual_SortNameAndVerify_S04_34 {
 
-	public static void main(String[] args) throws InterruptedException, StaleElementReferenceException  {
+	@Test()
+	public void individualSortByName() throws InterruptedException, StaleElementReferenceException  {
 		// TODO Auto-generated method stub
 		
 		WebDriverManager.chromedriver().setup();

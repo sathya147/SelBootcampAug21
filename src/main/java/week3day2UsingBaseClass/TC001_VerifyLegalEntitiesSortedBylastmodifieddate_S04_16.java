@@ -1,4 +1,4 @@
-package week1and2;
+package week3day2UsingBaseClass;
 
 import java.util.ArrayList;
 import java.util.Collections;

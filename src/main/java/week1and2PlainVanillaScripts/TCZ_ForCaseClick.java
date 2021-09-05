@@ -1,4 +1,4 @@
-package week1and2;
+package week1and2PlainVanillaScripts;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

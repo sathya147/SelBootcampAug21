@@ -1,19 +1,23 @@
-package week1and2;
+package week3day1ConverPlainVanillaScriptsToTestNG;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC1_Individual_Create_S04_30 {
+public class TC2_Individual_Edit_S04_31 {
 
-	public static void main(String[] args)  {
+	@Test
+	public void editIndividual() throws InterruptedException  {
 		// TODO Auto-generated method stub
 		
 		WebDriverManager.chromedriver().setup();
@@ -46,22 +50,33 @@ public class TC1_Individual_Create_S04_30 {
 		Actions actions = new Actions(driver); 
 		actions.moveToElement(elementIndividual).click().perform(); 
 		
-		driver.findElement(By.xpath("//div[@title='New']")).click();
-		driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys("Muthumariappan");
-		driver.findElement(By.xpath("//div[@data-aura-class='forceRecordEditActions']//span[text()='Save']")).click();
-		WebElement individualCreated_Success = driver.findElement(By.xpath("//span[text()='We found no potential duplicates of this Individual.']")); 
-		String stringOf_individualCreatedResult = individualCreated_Success.getText();  
-		System.out.println(stringOf_individualCreatedResult);
-		String stringOf_individualSuccessfullyCreated = "We found no potential duplicates of this Individual."; 
+		driver.findElement(By.xpath("//input[@name='Individual-search-input']")).sendKeys("Jeyaraj");
+		driver.findElement(By.xpath("//input[@name='Individual-search-input']")).sendKeys(Keys.ENTER);
+		Thread.sleep(7000);
+		//click on down arrow of first record
+		driver.findElement(By.xpath("//span[@class='slds-truncate' and @title='Name']/ancestor::table[@data-aura-class='uiVirtualDataTable']//tbody//tr[1]/td[6]")).click();
+		//clicking Edit
+		driver.findElement(By.xpath("//a[@title='Edit']")).click();
 		
-		if (stringOf_individualCreatedResult.equalsIgnoreCase(stringOf_individualSuccessfullyCreated)) {
-			System.out.println("New Individual is successfully created");
+		//selecting "Mr" in Salutation
+		driver.findElement(By.xpath("//span[text()='Salutation']/following::a[@class='select']")).click();
+		List<WebElement> list_Salutation = driver.findElements(By.xpath("//div[@class='select-options']//li"));
+		list_Salutation.get(1).click();
+		
+		
+		//Enter First Name and save
+		driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("Sathya");
+		driver.findElement(By.xpath("//div[@data-aura-class='forceRecordEditActions']//span[text()='Save']")).click();
+		
+		String stringOf_individualEditedResult = driver.findElement(By.partialLinkText("Sathya")).getText(); 
+		
+		if (stringOf_individualEditedResult.contains("Sathya")) {
+			System.out.println("Individual is edited successfully");
 		}
 		else {
-			System.out.println("New Individual was not created");
+			System.out.println("Individual was not edited as expected");
 		}
-		
-		
+
 
 		
 	}

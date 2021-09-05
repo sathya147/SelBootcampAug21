@@ -1,4 +1,4 @@
-package week1and2;
+package week1and2PlainVanillaScripts;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;

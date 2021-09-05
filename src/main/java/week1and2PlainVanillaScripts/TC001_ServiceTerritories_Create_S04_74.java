@@ -1,6 +1,5 @@
-package week1and2;
+package week1and2PlainVanillaScripts;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,7 +11,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC001_ServiceTerritories_Edit_S04_75 {
+public class TC001_ServiceTerritories_Create_S04_74 {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -44,44 +43,43 @@ public class TC001_ServiceTerritories_Edit_S04_75 {
 		Actions actions = new Actions(driver); 
 		actions.moveToElement(elementIndividual).click().perform(); 
 		
-		Thread.sleep(10000);
+		//Click on new
+		driver.findElement(By.xpath("//div[@title='New']")).click();
 		
-		/*
-		 * creating a for loop to navigate through the table and choose required data/value. 
-		 * This table had rows <tr> and within rows, has columns with two different tags <td> and <th> 
-		 * <th> for one row, as it acts as a link to open the details 
-		 */
+		//Enter Name 
+		driver.findElement(By.xpath("//label[@data-aura-class='uiLabel']/following-sibling::input")).sendKeys("Muthumariappan");
 		
-		List<WebElement> rows = driver.findElements(By.xpath("//table[@role='grid' and @data-aura-class='uiVirtualDataTable']//tbody/tr"));
-		List<WebElement> columnsTD = driver.findElements(By.xpath("//table[@role='grid' and @data-aura-class='uiVirtualDataTable']//tbody/tr[1]/td"));
-		List<WebElement> columnsTH = driver.findElements(By.xpath("//table[@role='grid' and @data-aura-class='uiVirtualDataTable']//tbody/tr[1]/th")); 
+		//Choosing Operating Hours drop down's first option
+		driver.findElement(By.xpath("//input[@title='Search Operating Hours']")).click(); 
+		Thread.sleep(3000); 
+		driver.findElements(By.xpath("//span[text()='Operating Hours']/following-sibling::span[text()='*']/../following-sibling::div//li")).get(0).click();
 		
-		System.out.println("number of rows: " + rows.size()); 
-		System.out.println("number of columnsTD: " + columnsTD.size()); 
-		System.out.println("number of columnsTH: " + columnsTH.size()); 
+		//Check Active checkbox
+		driver.findElement(By.xpath("//span[text()='Active']/parent::label/following-sibling::input")).click(); 
 		
-		for (int r = 1; r <= rows.size(); r++) {
- 			List<WebElement> td = driver.findElements(By.xpath("//table[@role='grid' and @data-aura-class='uiVirtualDataTable']//tbody/tr[" + r +"]/td"));
-			for (int cTD = 1; cTD < td.size(); cTD++) { 
-//				System.out.print(td.get(cTD).getText() + "  |  ");
-				if (cTD != 2) {
-					System.out.print(td.get(cTD).getText() + "  |  ");
-				}
-				else {
-						List<WebElement> th = driver.findElements(By.xpath("//table[@role='grid' and @data-aura-class='uiVirtualDataTable']//tbody/tr[" + r +"]/th")); 
-						if (th.size() != 0) {
-							System.out.print(th.get(0).getText() + "  |  ");
-						}
-						else {
-							System.out.print("empty here");
-						}
-				}
-			}
-			System.out.println();
+		//Enter City 
+		driver.findElement(By.xpath("//input[@placeholder='City']")).sendKeys("Sartell");
+		
+		//Enter  State
+		driver.findElement(By.xpath("//input[@placeholder='State/Province']")).sendKeys("Minnesota");
+		
+		//Enter Country 
+		driver.findElement(By.xpath("//input[@placeholder='Country']")).sendKeys("USA");
+		
+		//Enter Postal Code 
+		driver.findElement(By.xpath("//input[@placeholder='Zip/Postal Code']")).sendKeys("56337");
+		
+		//Click Save
+		driver.findElement(By.xpath("//div[@data-aura-class='forceRecordEditActions']//span[text()='Save']")).click();
+		
+		String stringOf_STcreated = driver.findElement(By.xpath("//span[contains(text(), 'Service Territory')]")).getText(); 
+		System.out.println(stringOf_STcreated);
+		if (stringOf_STcreated.equals("New Service Territory")) {
+			System.out.println("Service Territory is successfully created");
 		}
-
-		
-		
+		else {
+			System.out.println("Service Territory was not created");
+		}
 	}
 
 }

@@ -1,4 +1,4 @@
-package week1and2;
+package week3day1ConverPlainVanillaScriptsToTestNG;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
