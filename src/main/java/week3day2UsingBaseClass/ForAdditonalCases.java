@@ -7,7 +7,7 @@ public class ForAdditonalCases extends BaseClass {
 	@Test
 	public void enterCredentials()  {
 		
-//		driver.get("https://login.salesforce.com/");
+		driver.get("https://login.salesforce.com/");
 			
 		findByIDandPassValue("username", "matschie@testleaf.com"); 
 		findByIDandPassValue("password", "SelBootcamp$123"); 
@@ -16,7 +16,7 @@ public class ForAdditonalCases extends BaseClass {
 	@Test
 	public void enterUsername()  {
 
-//		driver.get("https://login.salesforce.com/");
+		driver.get("https://login.salesforce.com/");
 		
 		findByIDandPassValue("username", "uses Same Browser"); 
 	}

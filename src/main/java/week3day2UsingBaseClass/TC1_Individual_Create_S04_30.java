@@ -8,13 +8,9 @@ public class TC1_Individual_Create_S04_30 extends BaseClass {
 	@Test
 	public void createIndividual()  {
 
-//		driver.get("https://login.salesforce.com/");
-		findByIDandPassValue("username", "matschie@testleaf.com"); 
-		findByIDandPassValue("password", "SelBootcamp$123"); 
-		findByIDandClick("Login"); 
-		
-		findByClassNameAndClick("slds-icon-waffle");
-		findByXpathandClick("//button[@class='slds-button']");
+		loginSalesforce();
+		salesforcePathLauncherAndViewAll();
+
 		//need to scroll page for visibility
 		WebElement elementIndividual = findByXpath("//p[@class='slds-truncate' and text()='Individuals']"); 
 		actionsMoveToElementAndClick(elementIndividual);

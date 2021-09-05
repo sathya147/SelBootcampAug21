@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -23,7 +24,7 @@ public class BaseClass {
 	
 	public List<WebElement> listOfWebElements; 
 	
-	@BeforeClass
+	@BeforeMethod
 	public void initiateDriver() {
 	
 		System.out.print("base class ");
@@ -37,7 +38,7 @@ public class BaseClass {
 		driver.manage().timeouts().implicitlyWait(12, TimeUnit.SECONDS); 
 		
 		//navigate to site
-		driver.get("https://login.salesforce.com/");
+//		driver.get("https://login.salesforce.com/");
 		
 	}
 	
@@ -253,4 +254,26 @@ public class BaseClass {
 	
 	
 
+	
+	/* ****************************************************************************
+	 * METHODS SPECIFIC TO APPLICATION 
+	 * - LOGIN 
+	 * - CLICKING COMMON PATHS
+	 ****************************************************************************** */
+	
+	public void loginSalesforce ( ) {
+		driver.get("https://login.salesforce.com/");
+		findByIDandPassValue("username", "matschie@testleaf.com"); 
+		findByIDandPassValue("password", "SelBootcamp$123"); 
+		findByIDandClick("Login"); 	
+	}
+	
+	public void salesforcePathLauncherAndViewAll ( ) {
+		findByClassNameAndClick("slds-icon-waffle");
+		findByXpathandClick("//button[@class='slds-button']");
+	}
+	
+	
+	
+	
 }

@@ -1,31 +1,18 @@
 package week3day2UsingBaseClass;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TC2_Individual_Edit_S04_31 extends BaseClass {
 
 	@Test
 	public void editIndividual() throws InterruptedException {
 	
-//		driver.get("https://login.salesforce.com/");
-		findByIDandPassValue("username", "matschie@testleaf.com"); 
-		findByIDandPassValue("password", "SelBootcamp$123"); 
-		findByIDandClick("Login"); 
-		
-		findByClassNameAndClick("slds-icon-waffle");
-		findByXpathandClick("//button[@class='slds-button']");
+		loginSalesforce();
+		salesforcePathLauncherAndViewAll();
+
 		//need to scroll page for visibility
 		WebElement elementIndividual = findByXpath("//p[@class='slds-truncate' and text()='Individuals']"); 
 		jsExecutorClick(elementIndividual);
