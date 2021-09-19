@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite_IndividualSequentialxmlname">
+  <test name="Test_Chrome">
+    <classes>
+      <class name="week3day1ConverPlainVanillaScriptsToTestNG.TC1_Individual_Create_S04_30"/>
+      <class name="week3day1ConverPlainVanillaScriptsToTestNG.TC2_Individual_Edit_S04_31"/>
+    </classes>
+  </test>
+  <test name="alphaTest_StillChrome">
+    <classes>
+	    <class name="week3day1ConverPlainVanillaScriptsToTestNG.TC4_Individual_Delete_S04_32"/>
+	    <class name="week3day1ConverPlainVanillaScriptsToTestNG.TC5_Individual_CreateWithoutMandatoryField_S04_33"/>
+	    <class name="week3day1ConverPlainVanillaScriptsToTestNG.TC6_Individual_SortNameAndVerify_S04_34"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

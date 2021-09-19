@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ExcelData_Suite">
+<parameter name="sfurl" value="https://login.salesforce.com/"></parameter>
+<parameter name="sflogin" value="matschie@testleaf.com"></parameter>
+<parameter name="sfpassword" value="SelBootcamp$123"></parameter>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="week4day2ExcelApachePOI.TC1_Individual_Create_S04_30_ForEXCEL"/>
+<!--       <class name="week4day2ExcelApachePOI.TC2_Individual_Edit_S04_31_ForEXCEL"/>  -->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
