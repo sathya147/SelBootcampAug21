@@ -1,15 +1,15 @@
-package week4day2ExcelApachePOI;
+package forexcelreader;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import week4day2ExcelApachePOI.BaseClass;
 
-public class TC1_Individual_Create_S04_30_ForEXCEL extends BaseClass {
 
-	@BeforeSuite
+public class TC1_Individual_Create_S04_30_ForEXCEL extends forexcelreader.BaseClass {
+
+	@BeforeTest
 	public void setExcelFileName() {
 		System.out.println("Does the suite execute? ");
 		excelFileName = "week4day2Create"; 

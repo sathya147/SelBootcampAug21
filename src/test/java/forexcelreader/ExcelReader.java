@@ -1,4 +1,4 @@
-package week4day2ExcelApachePOI;
+package forexcelreader;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ public class ExcelReader {
 		System.out.println("in excel reader: " +excelName);
 		
 		XSSFWorkbook excelWB = new XSSFWorkbook("C:\\Sathya\\TestLeaf\\API Testing\\apiworkspaceEclipse\\"
-				+ "SelBootCamp\\src\\main\\java\\week4day2ExcelApachePOI\\excelData\\" + excelName + ".xlsx");
+				+ "SelBootCamp\\src\\main\\java\\week4day2_2ExcelApachePOI\\excelData\\" + excelName + ".xlsx");
 
 		XSSFSheet excelSheet = excelWB.getSheet("Sheet1");
 

@@ -6,8 +6,8 @@
 <parameter name="sfpassword" value="SelBootcamp$123"></parameter>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="week4day2ExcelApachePOI.TC1_Individual_Create_S04_30_ForEXCEL"/>
-<!--       <class name="week4day2ExcelApachePOI.TC2_Individual_Edit_S04_31_ForEXCEL"/>  -->
+      <class name="week4day2_2ExcelApachePOI.TC1_Individual_Create_S04_30_ForEXCEL"/>
+<!--       <class name="week4day2_2ExcelApachePOI.TC2_Individual_Edit_S04_31_ForEXCEL"/>  -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,4 +1,4 @@
-package week4day2ExcelHandlingClasses;
+package week4day2_1ExcelHandlingClasses;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ public class ExcelReadAllRowsAndColumnsDynamically {
 	public static void main(String[] args) throws IOException {
 
 		XSSFWorkbook excelWB = new XSSFWorkbook("C:\\Sathya\\TestLeaf\\API Testing\\apiworkspaceEclipse\\"
-				+ "SelBootCamp\\src\\main\\java\\week4day2ExcelApachePOI\\excelData\\week4day2Data.xlsx");
+				+ "SelBootCamp\\src\\main\\java\\week4day2_2ExcelApachePOI\\excelData\\week4day2Data.xlsx");
 
 		XSSFSheet excelSheet = excelWB.getSheet("Sheet1");
 
