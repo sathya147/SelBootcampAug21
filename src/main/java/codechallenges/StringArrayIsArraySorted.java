@@ -8,7 +8,8 @@ public class StringArrayIsArraySorted {
 
 	public static void main(String[] args) {
 		
-		String[] names = {"Ravi", "Manoj", "Arthy", "Karthick"}; 
+//		String[] names = { "aa", "Ravi", "Manoj", "Arthy", "Karthick"}; 
+		String[] names = { "aa", "arthy", "karthick", "manoj", "ravi"};
 		
 		//converting case and adding to List (ArrayList) 
 		List<String> toStoreAndSort = new ArrayList<String>(); 
@@ -17,18 +18,24 @@ public class StringArrayIsArraySorted {
 			toStoreAndSort.add(each.toLowerCase()); 
 		}
 		
+		System.out.println("before sort " +toStoreAndSort); 
 		Collections.sort(toStoreAndSort);
-//		System.out.println(toStoreAndSort); 
+		System.out.println("after sort" + toStoreAndSort); 
 		
 		for (int i = 0; i < toStoreAndSort.size(); i++) {
 			for (int j = 0; j< names.length; j++) {
-				if (toStoreAndSort.get(i).equalsIgnoreCase(names[j])) {
+				if (toStoreAndSort.get(i) == (names[j])) {
 					System.out.print(names[j] + ", ");
 				}
 			}
 		}
 		
-
+   if(toStoreAndSort.equals(names)) {
+	 System.out.println("the array is sorted");
+    }
+   else {
+	   System.err.println("array is not sorted");
+   }
 
 	}
 

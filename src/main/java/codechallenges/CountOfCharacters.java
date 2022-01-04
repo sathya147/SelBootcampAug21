@@ -1,11 +1,16 @@
 package codechallenges;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+
+import org.testng.annotations.Test;
 
 public class CountOfCharacters {
 
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		String input = "TESTLEAF";
 
 		// storing in set to ignore duplicates
@@ -29,5 +34,32 @@ public class CountOfCharacters {
 		}
 		System.out.println("end");
 	}
+*/
 
+	@Test
+	public void countofcharactersinString() {
+		
+		String input = "sathyajeyaraj"; 
+		Map<Character, Integer> map = new LinkedHashMap<Character, Integer>(); 
+		
+		for (int i = 0; i < input.length(); i++) {
+			int count = 0; 
+			for (int j = 0; j < input.length(); j++) {
+				if (input.charAt(i) == input.charAt(j) ) {
+					count ++; 
+				}
+			}
+			//inserting into Map for removing duplicate characters
+			map.put(input.charAt(i), count);
+		}
+		
+		for (Entry<Character, Integer>  character : map.entrySet()) {
+			System.out.println(character.getKey() + "        " + character.getValue());
+		}
+		
+		
+	}
+	
+	
+	
 }
